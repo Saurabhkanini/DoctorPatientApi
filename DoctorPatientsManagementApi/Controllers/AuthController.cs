@@ -34,9 +34,23 @@ namespace DoctorPatientsManagementApi.Controllers
             var users = mdbc.registerUsers.FirstOrDefault(x => x.UserName == r.UserName);
             if (users == null)
             {
-                mdbc.registerUsers.Add(r);
+                string hashpassword = BCrypt.Net.BCrypt.HashPassword(r.Password);
+                string hashCpassword = BCrypt.Net.BCrypt.HashPassword(r.ConfirmPassword);
+                var user = new RegisterUser() {
+                UserName = r.UserName,
+                Password = hashpassword,
+                ConfirmPassword = hashCpassword,
+                Email = r.Email,
+                PhoneNo = r.PhoneNo,
+                Gender = r.Gender,
+                Role = r.Role,
+            };
+
+
+
+                mdbc.registerUsers.Add(user);
                 mdbc.SaveChanges();
-                return Ok(r);
+                return Ok(user);
             }
             return BadRequest(new { error = "UserName Already Exists" });
 
@@ -47,7 +61,7 @@ namespace DoctorPatientsManagementApi.Controllers
             var user = await mdbc.registerUsers.FirstOrDefaultAsync(x => x.UserName == l.UserName);
             if (user != null)
             {
-                if (user.Password == l.Password)
+                if (BCrypt.Net.BCrypt.Verify(l.Password, user.Password))
                 {
                     var token = CreatToken(user);
                     return Ok(new { token, user });

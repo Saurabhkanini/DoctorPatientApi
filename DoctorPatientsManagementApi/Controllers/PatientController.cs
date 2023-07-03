@@ -1,4 +1,5 @@
 ﻿using DoctorPatientsManagementApi.Models;
+using DoctorPatientsManagementApi.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,8 @@ namespace DoctorPatientsManagementApi.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        private readonly DoctorsDbContext mdbc;
-        public PatientController(DoctorsDbContext tdbc)
+        private readonly IPatient mdbc;
+        public PatientController(IPatient tdbc)
         {
             this.mdbc = tdbc;
         }
@@ -24,48 +25,41 @@ namespace DoctorPatientsManagementApi.Controllers
             {
                 return Unauthorized("You are Not authorized");
             }
-            var patients = await mdbc.Patients.ToListAsync();
+            var patients = mdbc.GetAllPatients();
             return Ok(patients);
         }
         [HttpPost]
         public async Task<ActionResult> AddPatient(Patient t)
         {
-            await mdbc.Patients.AddAsync(t);
-            await mdbc.SaveChangesAsync();
+            mdbc.AddPatient(t);
             return Ok(t);
         }
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdatePatient(Patient t, int id)
         {
-            var patient = await mdbc.Patients.FindAsync(id);
+            var patient =  mdbc.UpdatePatient(t, id);
             if (patient == null)
             {
                 return BadRequest($"Patient Not find With id = {id}");
             }
-            patient.pname = t.pname;
-            patient.plocation = t.plocation;
-            patient.pissue = t.pissue;
-           
-            mdbc.Patients.Update(patient);
-            mdbc.SaveChanges();
+            
             return Ok(patient);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePatient(int id)
         {
-            var patient = await mdbc.Patients.FindAsync(id);
+            var patient =  mdbc.DeletePatient(id);
             if (patient == null)
             {
                 return NotFound($"Patient Not Found with id = {id}");
             }
-            mdbc.Patients.Remove(patient);
-            await mdbc.SaveChangesAsync();
+           
             return Ok(patient);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult> GetPatient(int id)
         {
-            var patient = await mdbc.Patients.FindAsync(id);
+            var patient =  mdbc.GetPatient(id);
             if (patient == null)
             {
                 return NotFound($"Patient Not Found with id = {id}");

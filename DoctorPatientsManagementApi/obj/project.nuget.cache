@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "1RFEDElCt5GL3v12P6ZJfz8rd4BTFWUZfxVjU3yWn//IadECb2IZQvcRFaWsQWUTj1244gPvyU2pYuVTqJmCrA==",
+  "dgSpecHash": "9tmxt91Eoy8qQ+dFMzaRYSz9h/lDsEZU2GsOnuJVX+pbmbRVkw/ZTy6K7V4dwRx20fHvE4DhUc+vxMcp0PYwcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\itzsa\\source\\repos\\DoctorPatientsManagementApi\\DoctorPatientsManagementApi\\DoctorPatientsManagementApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\itzsa\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\itzsa\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\itzsa\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\itzsa\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\itzsa\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.19\\microsoft.aspnetcore.authentication.jwtbearer.6.0.19.nupkg.sha512",
     "C:\\Users\\itzsa\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

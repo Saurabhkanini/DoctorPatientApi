@@ -81,3 +81,4 @@ C:\Users\itzsa\source\repos\DoctorPatientsManagementApi\DoctorPatientsManagement
 C:\Users\itzsa\source\repos\DoctorPatientsManagementApi\DoctorPatientsManagementApi\obj\Debug\net6.0\DoctorPatientsManagementApi.pdb
 C:\Users\itzsa\source\repos\DoctorPatientsManagementApi\DoctorPatientsManagementApi\obj\Debug\net6.0\DoctorPatientsManagementApi.genruntimeconfig.cache
 C:\Users\itzsa\source\repos\DoctorPatientsManagementApi\DoctorPatientsManagementApi\obj\Debug\net6.0\ref\DoctorPatientsManagementApi.dll
+C:\Users\itzsa\source\repos\DoctorPatientsManagementApi\DoctorPatientsManagementApi\bin\Debug\net6.0\BCrypt.Net-Next.dll
